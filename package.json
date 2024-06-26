@@ -1,6 +1,7 @@
 {
   "name": "openai-ping",
   "displayName": "openai-ping",
+  "icon": "https://github.com/gencay/vscode-chatgpt/blob/main/images/ai-logo-in.png",
   "description": "",
   "version": "0.0.1",
   "engines": {
@@ -13,7 +14,6 @@
     "onStartupFinished"
   ],
   "main": "./out/extension.js",
-  "icon": "images/icon-abdel.png",
   "contributes": {
     "commands": [
       {

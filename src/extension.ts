@@ -4,8 +4,21 @@ import axios from "axios";
 export function activate(context: vscode.ExtensionContext) {
   
   
-  const iconPath = vscode.Uri.file(context.asAbsolutePath("icon-abdel.png"));
   vscode.window.showInformationMessage("Hello");
+
+
+  // Add an icon to the status bar
+  const myStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
+  const iconPath = vscode.Uri.file(
+    context.extensionPath + '/icon-abdel.png'
+  );
+
+  myStatusBarItem.text = `Abdel qui code $(file)`;
+  myStatusBarItem.tooltip = 'Abdel ne code pas Abdel dors';
+  myStatusBarItem.command = 'extension.showNotification';
+  myStatusBarItem.show();
+
+  context.subscriptions.push(myStatusBarItem);
 
   let disposable = vscode.commands.registerCommand(
     "extension.generateCode",
