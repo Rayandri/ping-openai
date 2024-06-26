@@ -2,6 +2,11 @@ import * as vscode from "vscode";
 import axios from "axios";
 
 export function activate(context: vscode.ExtensionContext) {
+  
+  
+  const iconPath = vscode.Uri.file(context.asAbsolutePath("icon-abdel.png"));
+  vscode.window.showInformationMessage("Hello");
+
   let disposable = vscode.commands.registerCommand(
     "extension.generateCode",
     async () => {
@@ -26,7 +31,7 @@ export function activate(context: vscode.ExtensionContext) {
       const text = document.getText(range);
 
       // Prepare the prompt
-      const prompt = `Complete the following code respect the PEP8 Convention and don't put comment only code:\n\n${text}\n`;
+      const prompt = `Complete the following code while maintaining the existing style and logic. If it's Python, ensure PEP 8 compliance:\n\n${text}\n`;
       try {
         const apiKey = await vscode.window.showInputBox({
           prompt: "Enter your OpenAI API key",
@@ -55,6 +60,7 @@ export function activate(context: vscode.ExtensionContext) {
         editor.edit((editBuilder) => {
           editBuilder.insert(position, generatedCode);
         });
+        vscode.window.showInformationMessage("Succes insert code");
       } catch (error: unknown) {
         const errorMessage =
           error instanceof Error ? error.message : "An unknown error occurred";
