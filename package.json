@@ -18,7 +18,7 @@
     "commands": [
       {
         "command": "extension.generateCode",
-        "title": "Generate Code with GPT-4"
+        "title": "Generate Code with GPT-4o"
       }
     ]
   },
